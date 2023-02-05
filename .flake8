@@ -1,0 +1,15 @@
+[flake8]
+exclude =
+    .tox,
+    .git,
+    __pycache__,
+    docs,
+    build,
+    dist,
+    *.pyc,
+    *.egg-info,
+    .cache,
+    .eggs
+max-complexity = 10
+max-line-length = 88
+import-order-style = pep8
