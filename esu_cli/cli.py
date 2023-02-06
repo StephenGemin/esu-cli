@@ -1,7 +1,13 @@
+import logging
+
 import click
 import click_log
 
 from esu_cli import __version__
+from esu_cli.github import github_subcommands
+
+logger = logging.getLogger(__name__)
+click_log.basic_config()
 
 
 @click.group()
@@ -12,5 +18,8 @@ def main():
     click.echo(err=True)
 
 
-if __name__ == '__main__':
+main.add_command(github_subcommands)
+
+
+if __name__ == "__main__":
     main()

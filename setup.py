@@ -15,17 +15,18 @@ setup(
         "click",
         "click_log",
         "click_spinner",
+        "gitpython",
+        "pygithub",
+        "pyyaml",
         "colorama; platform_system == 'Windows'",
         "importlib_metadata; python_version < '3.8'",
     ],
-    entry_points={
-        "console_scripts":["esu=esu_cli.cli:main"]
-    },
-    classifiers = [
+    entry_points={"console_scripts": ["esu=esu_cli.cli:main"]},
+    classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache 2.0",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-    ]
+    ],
 )
