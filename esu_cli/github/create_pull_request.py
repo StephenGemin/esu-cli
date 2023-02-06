@@ -59,4 +59,4 @@ def main(remote_key, base, title, head, org, repo, desc, push, draft):
 
 
 if __name__ == "__main__":
-    main(["-b", "main", "-t", "foo"])
+    main(["-v", "DEBUG", "-b", "main", "-t", "foo"])

@@ -1,3 +1,4 @@
+import logging
 import re
 from urllib.parse import urlparse
 
@@ -6,6 +7,8 @@ import click_spinner
 from git import Repo
 
 from esu_cli.utils.click_wrappers import MessageWithCheckMark
+
+logger = logging.getLogger(__name__)
 
 
 class GitRepo:
@@ -18,7 +21,7 @@ class GitRepo:
 
         # for convenience
         self._wd = self.repo.working_tree_dir if path is None else path
-        click.echo(f"Git directory: {self._wd}")
+        logger.info(f"Git directory: {self._wd}")
         self._git = self.repo.git
 
     @property

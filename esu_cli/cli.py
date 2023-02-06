@@ -7,12 +7,11 @@ from esu_cli import __version__
 from esu_cli.github import github_subcommands
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
 click_log.basic_config(logger)
 
 
 @click.group()
-@click_log.simple_verbosity_option(logger)
+@click_log.simple_verbosity_option(logger=logger, default="DEBUG", show_default=True)
 @click.version_option(__version__)
 def main():
     click.echo(f"ESU Command Line Interface version {__version__}")
