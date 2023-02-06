@@ -6,6 +6,7 @@ import click_log
 from esu_cli.github import create_pull_request
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 click_log.basic_config(logger)
 
 

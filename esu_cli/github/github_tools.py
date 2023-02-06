@@ -1,6 +1,11 @@
+import logging
+import re
+
 from github import Github, PullRequest, Repository
 
 from esu_cli.utils import config
+
+logger = logging.getLogger(__name__)
 
 
 def get_scm(key: str) -> tuple:
@@ -31,7 +36,20 @@ class GithubRepo:
         body=None,
         draft=False,
     ) -> PullRequest:
+        if body is None:
+            body = self._find_default_template()
         pr = self.repo.create_pull(
             title=title, body=body, head=head, base=base, draft=draft
         )
         return pr
+
+    def _find_default_template(self) -> str:
+        logger.info("Attempt to find remote pull request template")
+        pattern = "pull_request_template"
+        for file in self.repo.get_contents(".github"):
+            if re.findall(pattern, file.path.lower(), flags=re.IGNORECASE):
+                logger.info(f"Remote pull request template found: {file.path}")
+                file_content = self.repo.get_contents(file.path)
+                return file_content.decoded_content.decode("utf-8")
+        logger.info("Unable to find remote pull request template")
+        return ""
