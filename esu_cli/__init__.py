@@ -1,3 +1,7 @@
+import logging
+
+import click_log
+
 try:
     from importlib.metadata import version, PackageNotFoundError
 except (ImportError, ModuleNotFoundError):
