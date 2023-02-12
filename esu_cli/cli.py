@@ -4,6 +4,7 @@ import click
 import click_log
 
 from esu_cli import __version__
+from esu_cli.cv import cv_subcommands
 from esu_cli.github import github_subcommands
 
 logger = logging.getLogger(__name__)
@@ -19,6 +20,7 @@ def main():
 
 
 main.add_command(github_subcommands)
+main.add_command(cv_subcommands)
 
 
 if __name__ == "__main__":

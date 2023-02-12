@@ -16,6 +16,8 @@ setup(
         "click_log",
         "click_spinner",
         "gitpython",
+        "numpy",
+        "opencv-python",
         "pygithub",
         "pyyaml",
         "colorama; platform_system == 'Windows'",
