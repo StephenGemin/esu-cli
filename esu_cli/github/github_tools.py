@@ -1,6 +1,7 @@
 import logging
 import re
 
+import github
 from github import Github, PullRequest, Repository
 
 from esu_cli.utils import config
@@ -46,7 +47,17 @@ class GithubRepo:
     def _find_default_template(self) -> str:
         logger.info("Attempt to find remote pull request template")
         pattern = "pull_request_template"
-        for file in self.repo.get_contents(".github"):
+        try:
+            contents = self.repo.get_contents(".github")
+        except github.UnknownObjectException:
+            contents = []
+            logger.exception(
+                "Error fetching remote pull request template"
+                "\n\nPossible reasons could be:"
+                "\n\t.github folder does not exist in remote repo\n"
+            )
+
+        for file in contents:
             if re.findall(pattern, file.path.lower(), flags=re.IGNORECASE):
                 logger.info(f"Remote pull request template found: {file.path}")
                 file_content = self.repo.get_contents(file.path)
