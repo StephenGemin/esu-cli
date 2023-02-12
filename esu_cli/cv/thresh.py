@@ -35,11 +35,13 @@ def main(view_scale, save_result, image_file):
         if _processing.imshow_with_q_exit("Thresh Finder", img_stack):
             break
 
-    click.secho(f"Threshold viewer result:\n" f"min: {min_thresh}, max: {max_thresh}\n", color="green")
+    click.secho(
+        f"Threshold viewer result:\nmin: {min_thresh}, max: {max_thresh}\n",
+        color="green",
+    )
     if save_result:
         _processing.save(img_path, "thresh_result", img_thresh)
 
 
 if __name__ == "__main__":
     main()
-

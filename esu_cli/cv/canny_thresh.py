@@ -32,7 +32,8 @@ def main(view_scale, save, image_file):
             break
 
     click.secho(
-        f"Canny edge detection result:\n" f"min: {min_thresh}, max: {max_thresh}\n", color="green"
+        f"Canny edge detection result:\nmin: {min_thresh}, max: {max_thresh}\n",
+        color="green",
     )
     if save:
         _processing.save(img_path, "canny_thresh_result", img_canny)

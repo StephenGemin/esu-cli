@@ -54,7 +54,7 @@ class GithubRepo:
             logger.exception(
                 "Error fetching remote pull request template"
                 "\n\nPossible reasons could be:"
-                "\n\t.github folder does not exist in remote repo"
+                "\n\t.github folder does not exist in remote repo\n"
             )
 
         for file in contents:

@@ -53,7 +53,7 @@ def main(view_scale, save_result, save_mask, image_file):
         f"hue_min: {hue_min}, hue_max: {hue_max}\n"
         f"sat_min: {sat_min}, sat_max: {sat_max}\n"
         f"val_min: {val_min}, val_max: {val_max}\n",
-        color="green"
+        color="green",
     )
     if save_result:
         _processing.save(img_path, "hsv_mask_result", mask_result)

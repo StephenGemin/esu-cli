@@ -53,7 +53,7 @@ def main(view_scale, save_result, save_mask, image_file):
         f"r_min: {r_min}, r_max: {r_max}\n"
         f"g_min: {g_min}, g_max: {g_max}\n"
         f"b_min: {b_min}, b_max: {b_max}\n",
-        color="green"
+        color="green",
     )
     if save_result:
         _processing.save(img_path, "bgr_mask_result", mask_result)
