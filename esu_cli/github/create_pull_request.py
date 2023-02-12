@@ -7,7 +7,7 @@ from esu_cli.github import github_tools
 from esu_cli.utils.click_wrappers import MessageWithCheckMark
 
 
-@click.command(name="create-pr")
+@click.command(name="new-pr")
 @click.option(
     "--remote",
     type=click.STRING,
