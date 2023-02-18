@@ -2,19 +2,13 @@ import click
 from click_spinner import spinner
 
 from esu_cli.git.git_repo import GitRepo
-from esu_cli.github import github_tools
+from esu_cli.github import github_tools, _params
 
 from esu_cli.utils.click_wrappers import MessageWithCheckMark
 
 
-@click.command(name="new-pr")
-@click.option(
-    "--remote",
-    type=click.STRING,
-    default="public",
-    help="Only to be used if pushing to a non-public remote, Ex. enterprise",
-    show_default=True,
-)
+@click.command(name="create")
+@_params.github_params
 @click.option("-b", "--base", type=click.STRING, required=True)
 @click.option("-t", "--title", type=click.STRING, required=True)
 @click.option("-h", "--head", type=click.STRING, default=None, show_default=True)
@@ -54,7 +48,7 @@ def main(remote, base, title, head, org, repo, desc, push, draft):
     base_url, token = github_tools.get_scm(remote)
 
     with MessageWithCheckMark(
-        f"Connecting to GitHub; Base URL: {base_url or 'using public GitHub'}"
+        f"Connecting to GitHub; Base URL: {base_url or 'using public url'}"
     ), spinner():
         g = github_tools.UserGithub(login_or_token=token, base_url=base_url)
         g_repo = github_tools.GithubRepo(g.get_repo(f"{org}/{repo}"))
